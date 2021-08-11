@@ -2,6 +2,7 @@ package com.tutorialsninja.automation.stepdef;
 
 import com.tutorialsninja.automation.base.Base;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.*;
 
 public class Register{
@@ -19,7 +20,7 @@ public class Register{
 	}
 
 	@When("^I provide all the below details$")
-	public void i_provide_all_the_below_details(){
+	public void i_provide_all_the_below_details(DataTable datatable){
 	    
 	}
 
