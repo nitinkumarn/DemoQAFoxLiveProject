@@ -58,5 +58,25 @@ public class Register{
 		
 	    
 	}
+	
+	@Then("^I should see that the user account is not be cretaed$")
+	public void i_should_see_that_the_user_account_is_not_be_cretaed(){
+		
+		Assert.assertTrue(Elements.isDisplayed(RegisterPage.registerBreadcrumb));
+	    
+	}
+
+	@Then("^I should see the error messages informing the user to fill the mandatory fields$")
+	public void i_should_see_the_error_messages_informing_the_user_to_fill_the_mandatory_fields(){
+		
+		
+	    Assert.assertTrue(Elements.isDisplayed(RegisterPage.firstNameWarning));
+	    Assert.assertTrue(Elements.isDisplayed(RegisterPage.lastNameWarning));
+	    Assert.assertTrue(Elements.isDisplayed(RegisterPage.emailWarning));
+	    Assert.assertTrue(Elements.isDisplayed(RegisterPage.telephoneWarning));
+	    Assert.assertTrue(Elements.isDisplayed(RegisterPage.passwordWarning));
+	    Assert.assertTrue(Elements.isDisplayed(RegisterPage.mainWarning));
+	}
+
 
 }
