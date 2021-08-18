@@ -61,16 +61,23 @@ public class RegisterPage {
 	@FindBy(css="div[class$='alert-dismissible']")
 	public static WebElement mainWarning;
 	
-	public static void enterAllDetails(DataTable datatable) {
+	@FindBy(css="input[name='newsletter'][value='1']")
+	public static WebElement yesToNewsLetter ;
+	
+	public static void enterAllDetails(DataTable datatable, String detailsType) {
 		
 Map<String,String> map =datatable.asMap(String.class, String.class);
 		
 	    Elements.TypeText(RegisterPage.firstname, map.get("Firstname"));
 	    Elements.TypeText(RegisterPage.lastname, map.get("Lastname"));
-	    Elements.TypeText(RegisterPage.email, System.currentTimeMillis()+map.get("Email"));
 	    Elements.TypeText(RegisterPage.telephone, map.get("Telephone"));
 	    Elements.TypeText(RegisterPage.password, map.get("Password"));
 	    Elements.TypeText(RegisterPage.confirmPassword, map.get("Password"));
+	    
+	    if(detailsType.equalsIgnoreCase("duplicate"))
+	    	Elements.TypeText(RegisterPage.email,map.get("Email"));
+	    else
+	    	Elements.TypeText(RegisterPage.email, System.currentTimeMillis()+map.get("Email"));
 	}
-
+	
 }

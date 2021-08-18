@@ -34,7 +34,7 @@ public class Register{
 	@When("^I provide all the below details$")
 	public void i_provide_all_the_below_details(DataTable datatable){
 		
-		RegisterPage.enterAllDetails(datatable);
+		RegisterPage.enterAllDetails(datatable,"unique");
 	}
 
 	@And("^I select the privacy policy$")
@@ -77,6 +77,28 @@ public class Register{
 	    Assert.assertTrue(Elements.isDisplayed(RegisterPage.passwordWarning));
 	    Assert.assertTrue(Elements.isDisplayed(RegisterPage.mainWarning));
 	}
+	
+	@And("^I  subscribe to Newsletter$")
+	public void i_subscribe_to_Newsletter(){
+		
+	    Elements.click(RegisterPage.yesToNewsLetter);
+	   
+	}
+	
+	@When("^I provide the below  duplicate details$")
+	public void i_provide_the_below_duplicate_details(DataTable datatable){
+		
+		RegisterPage.enterAllDetails(datatable,"duplicate");
+	    
+	}
+
+	@Then("^I should see that the user is restricted from creating duplicate account$")
+	public void i_should_see_that_the_user_is_restricted_from_creating_duplicate_account(){
+		
+		Assert.assertTrue(Elements.VerifyTextEquals(RegisterPage.mainWarning, "Warning: E-Mail Address is already registered!"));
+	    
+	}
+
 
 
 }
