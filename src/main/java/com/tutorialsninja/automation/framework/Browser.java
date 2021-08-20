@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 import com.tutorialsninja.automation.base.Base;
 
@@ -42,6 +43,11 @@ public class Browser {
 
 		case "htmlunit":
 			Base.driver = new HtmlUnitDriver();
+			log.info("HtmlUnit Browser is Started" + Base.driver.hashCode());
+			return Base.driver;
+			
+		case "safari":
+			Base.driver = new SafariDriver();
 			log.info("HtmlUnit Browser is Started" + Base.driver.hashCode());
 			return Base.driver;
 
